@@ -7,12 +7,12 @@ do
     echo "Checking for $pkge"
     PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $pkge |grep "install ok installed") 
     if [ "" == "$PKG_OK" ]; then
-        sudo apt-get --force-yes --yes install $pkge > /dev/null
+        sudo apt install $pkge -y
     fi
 done
 
-sudo service apache2 stop > /dev/null
-sudo apt remove --purge apache2* > /dev/null
+sudo service apache2 stop
+sudo apt remove --purge apache2* -y > /dev/null
 
 sudo ufw allow OpenSSH
 sudo ufw allow 'Nginx HTTP'
@@ -49,3 +49,5 @@ sudo mv codenation /usr/local/bin
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
+
+reboot
