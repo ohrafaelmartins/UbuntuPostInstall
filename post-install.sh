@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apps=(curl net-tools php php-mysql php-xdebug composer nginx docker docker-compose inkscape)
+apps=(curl net-tools php php-mysql php-xdebug composer nginx docker docker-compose inkscape gnome-tweak-tool vlc synaptic gparted xclip)
 
 for pkge in "${apps[@]}"
 do
