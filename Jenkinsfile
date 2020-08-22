@@ -4,7 +4,8 @@ pipeline {
     stage('Teste01') {
       steps {
         sh 'echo "TEste"'
-        whateverFunction "arg01" "arg02"
+        whateverFunction("arg01")
+        callSh("java -version")
         build 'job01'
       }
     }
@@ -12,7 +13,11 @@ pipeline {
   }
 }
 
-void whateverFunction() {
+void whateverFunction(String argA) {
     sh 'ls -lha'
-    sh "Hello World $1 - $2"
+    echo "Hello World ${argA}"
+}
+
+void callSh(String cmd) {
+    sh ('#!/bin/sh -e\n' + cmd)
 }
